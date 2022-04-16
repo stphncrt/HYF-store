@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Category from "./components/Category";
+import Products from "./components/Products";
+import products from "./fake-data/all-products";
+import { useState, useEffect } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [filteredProducts, setFilteredProducts] = useState(products);
+	const [selectedCategory, setSelectedCategory] = useState("");
+
+	useEffect(() => {
+		const filtered = products.filter((product) => selectedCategory.slice(6) === product.category);
+		setFilteredProducts(filtered);
+		console.log(selectedCategory);
+	}, [selectedCategory]);
+
+	return (
+		<div className="App">
+			<h1 id="header">Welcome to HYF store...</h1>
+			<h1>Products</h1>
+			<Category
+				selectCategory={(category) => setSelectedCategory(category)}
+				selectedCategory={selectedCategory}
+			/>
+			<Products filteredProducts={filteredProducts.length !== 0 ? filteredProducts : products} />
+		</div>
+	);
 }
 
 export default App;
