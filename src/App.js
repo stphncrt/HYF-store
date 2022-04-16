@@ -17,7 +17,7 @@ function App() {
 	return (
 		<div className="App">
 			<h1 id="header">Welcome to HYF store...</h1>
-			<h1>Products</h1>
+			<h1 id="heading">Products</h1>
 			<Category
 				selectCategory={(category) => setSelectedCategory(category)}
 				selectedCategory={selectedCategory}
