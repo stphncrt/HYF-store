@@ -2,7 +2,7 @@ import "./App.css";
 import Category from "./components/Category";
 import Products from "./components/Products";
 import products from "./fake-data/all-products";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
 	const [filteredProducts, setFilteredProducts] = useState(products);
